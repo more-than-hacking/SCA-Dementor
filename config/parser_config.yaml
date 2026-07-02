@@ -1,0 +1,37 @@
+python:
+  patterns:
+    - requirements.txt
+    - Pipfile
+    - pyproject.toml
+    - setup.py
+  parser: python_parser
+
+java:
+  parser: java_parser
+  patterns:
+    - pom.xml   
+
+gradle:
+  patterns:
+    - build.gradle
+    - build.gradle.kts
+  parser: gradle_parser
+
+javascript:
+  parser: node_parser
+  patterns:
+    - package.json
+    - yarn.lock
+
+typescript:
+  parser: node_parser
+  patterns:
+    - package.json
+    - tsconfig.json
+    - yarn.lock
+
+go:
+  parser: go_parser
+  patterns:
+    - go.mod
+    - go.sum

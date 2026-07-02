@@ -1,0 +1,47 @@
+# Dementor - SCA
+
+# Secrets and local config
+.env
+.env.*
+!.env.example
+config/org_config.yaml
+!config/org_config.yaml.example
+
+# Generated / large outputs
+dependency_results.json
+vulnerability_report_*.json
+scan_jobs.jsonl
+skipped_libraries.log
+dependency_downloader.log
+.cache/
+outputs/*
+!outputs/.gitkeep
+results/*
+!results/.gitkeep
+
+# Scanned repo data (optional: remove if you want to track empty dirs)
+REPOSITORIES/
+SCA_CLONED_REPOS/
+
+# Local venv
+.SCA/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+*.swp
+*.swo
+
+# Docker
+.docker/

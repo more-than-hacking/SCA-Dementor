@@ -1,0 +1,40 @@
+# Keep the image small and secrets OUT of it.
+# Anything that holds credentials, clones, or generated state is excluded —
+# those are provided at runtime via env vars and mounted volumes instead.
+
+# Secrets / local config (mounted or passed via env at runtime, never baked in)
+config/org_config.yaml
+.env
+*.pem
+*.key
+
+# Cloned repos + generated scan state (persisted via volumes at runtime)
+REPOSITORIES/
+SCA_CLONED_REPOS/
+.cache/
+scan_jobs.jsonl
+vulnerability_report*.json
+dependency_results.json
+outputs/
+results/
+
+# VCS / Python / editor cruft
+.git/
+.gitignore
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+.DS_Store
+.idea/
+.vscode/
+
+# Docs/scratch that don't belong in the runtime image
+*.md.bak
+scratchpad/
+node_modules/

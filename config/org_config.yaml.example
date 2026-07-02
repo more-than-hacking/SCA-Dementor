@@ -1,0 +1,48 @@
+# Dementor SCA — GitHub credentials and scan defaults
+# Copy this file to org_config.yaml and fill in your values.
+# This file is gitignored — never commit org_config.yaml.
+
+github:
+  org_name: your-github-org
+  token: ghp_your_github_pat_here   # needs repo + read:org scopes
+
+# Top-level aliases (used by older parts of the codebase)
+org_name: your-github-org
+GITHUB_TOKEN: ghp_your_github_pat_here
+
+scan:
+  mode: single          # single | multi | full_org
+  repos: []             # list of repo names for single/multi mode
+  max_repos: 10         # cap for full_org mode (0 = no limit)
+  skip_reachability: false   # true = OSV-only, no AI analysis (faster)
+
+# AI / LLM provider — pick one block and fill it in.
+# You can also set these as env vars: LLM_PROVIDER, LLM_API_URL, LLM_API_KEY, LLM_MODEL
+
+# Option 1: Cursor proxy (default — no key needed, Cursor IDE must be running)
+llm:
+  provider: cursor
+  api_url: ""           # leave blank → uses CURSOR_PROXY_URL or http://localhost:3000
+  api_key: ""
+  model: ""
+
+# Option 2: OpenAI
+# llm:
+#   provider: openai
+#   api_url: ""         # leave blank for https://api.openai.com/v1; set for Azure
+#   api_key: sk-your-openai-key
+#   model: gpt-4o
+
+# Option 3: Anthropic
+# llm:
+#   provider: anthropic
+#   api_url: ""         # leave blank for https://api.anthropic.com
+#   api_key: sk-ant-your-key
+#   model: claude-3-5-sonnet-20241022
+
+# Option 4: Custom / OpenAI-compatible (Ollama, vLLM, LM Studio, Together AI…)
+# llm:
+#   provider: custom
+#   api_url: http://localhost:11434/v1   # your endpoint
+#   api_key: ""                          # optional bearer token
+#   model: llama3

@@ -1,0 +1,54 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Dementor — The SCA Hunter
+#
+#   1. cp .env.example .env   &&   edit .env  (GitHub token + your LLM key)
+#   2. docker compose up --build
+#   3. open http://localhost:5000
+#
+# Bring your own LLM key (Gemini free tier works). With no key the deterministic
+# layers still run (OSV + transitive + EPSS/KEV); the AI reachability step needs it.
+# ─────────────────────────────────────────────────────────────────────────────
+services:
+  dementor:
+    build: .
+    image: dementor-sca
+    container_name: dementor-sca
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    environment:
+      # Fallbacks if not set in .env. The app also reads config/org_config.yaml
+      # when mounted, but env vars take precedence (see llm_client._cfg).
+      - LLM_PROVIDER=${LLM_PROVIDER:-gemini}
+      - LLM_MODEL=${LLM_MODEL:-gemini-2.5-flash}
+      # GITHUB_TOKEN, ORG_NAME, LLM_API_KEY, LLM_API_URL come from .env
+    volumes:
+      # Cloned repos AND uploaded repos live in a HOST folder (bind mount) — visible and
+      # manageable on your machine, not hidden inside a Docker volume. Everything here is a
+      # COPY (a git clone or an uploaded copy), so deleting one never touches an original.
+      - ./REPOSITORIES:/app/REPOSITORIES
+      - dementor_cache:/app/.cache
+      # Config written via the UI (token + LLM key + org) lands here and survives
+      # `docker compose down`. Docker seeds this volume from the image's config/ on
+      # first run, so the bundled Languages.yaml / zero_fp.yaml / parser_config.yaml
+      # are preserved — only your secrets get added on top.
+      - dementor_config:/app/config
+      # Alternatively, skip the UI and pass GITHUB_TOKEN / LLM_API_KEY via .env (above).
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:5000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+        reservations:
+          memory: 1G
+
+volumes:
+  dementor_cache:
+  dementor_config:

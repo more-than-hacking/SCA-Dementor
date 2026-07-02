@@ -1,0 +1,19 @@
+# Zero False Positive SCA mode
+# When enabled, only findings that pass exact version + OSV + reachability + Ollama are reported.
+
+zero_fp:
+  enabled: true
+  # Require resolved version from lockfile; skip deps with only range from manifest
+  require_lockfile: true
+  # Skip reachability + Ollama; report OSV-only findings so you can run reachability per-item (e.g. from dashboard)
+  skip_reachability: true
+  # Ollama model for "does this code trigger this CVE?" confirmation
+  ollama_model: "qwen2.5-coder:7b"
+  # Only report if Ollama says YES for at least one usage snippet (ignored when skip_reachability: true)
+  ollama_confirm_gate: true
+  # Optional: only consider OSV vulns that have a CVE id (reduces noise)
+  osv_require_cve: false
+  # Cache Ollama responses by (snippet_hash, vuln_id) to avoid re-asking
+  cache_ollama_responses: true
+  # Output path for confirmed findings only
+  report_path: "vulnerability_report_confirmed.json"

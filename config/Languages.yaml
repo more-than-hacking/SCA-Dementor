@@ -1,0 +1,129 @@
+languages:
+  Jupyter Notebook:
+    - requirements.txt  # often used with notebooks
+    - environment.yml   # used for Conda environments
+  HTML:
+    - index.html
+  Java:
+    - pom.xml
+    - build.gradle
+    - build.gradle.kts
+  Roff: []  # no standard dependency files
+  JavaScript:
+    - package.json
+    - yarn.lock
+  TypeScript:
+    - package.json
+    - tsconfig.json
+    - yarn.lock
+  Go:
+    - go.mod
+    - go.sum
+  Python:
+    - requirements.txt
+    - Pipfile
+    - pyproject.toml
+    - setup.py
+  HCL:
+    - main.tf
+    - variables.tf
+    - terraform.tfvars
+  Ruby:
+    - Gemfile
+    - Gemfile.lock
+  Clojure:
+    - project.clj
+    - deps.edn
+  FreeMarker: []  # templating language, no deps
+  PLpgSQL: []  # SQL language, no deps
+  Jinja:
+    - requirements.txt
+    - environment.yml
+  LookML: []  # Looker modeling language
+  MDX: []  # used with Storybook/Next.js — usually no direct dep files
+  Shell:
+    - .env
+    - env
+    - install.sh
+  CSS: []  # style language, no deps
+  Smarty: []  # templating engine
+  Dart:
+    - pubspec.yaml
+  Mustache: []  # templating engine
+  Less: []  # preprocessor for CSS
+  Rust:
+    - Cargo.toml
+    - Cargo.lock
+  Apex: []  # Salesforce — usually managed in org
+  PHP:
+    - composer.json
+    - composer.lock
+  SCSS: []  # style preprocessor
+  Makefile:
+    - Makefile
+  Dockerfile:
+    - Dockerfile
+  PostScript: []  # document format
+  C: []  # no package manager, uses Makefile/CMake
+  Kotlin:
+    - build.gradle.kts
+    - build.gradle
+  Gherkin:
+    - "*.feature"
+  Swift:
+    - Package.swift
+  XSLT: []  # XML transform
+  CoffeeScript:
+    - package.json
+  Handlebars: []  # templating
+  Slim: []  # templating
+  Groovy:
+    - build.gradle
+  RobotFramework:
+    - requirements.txt
+  F#:
+    - paket.dependencies
+    - paket.lock
+  Perl:
+    - cpanfile
+    - Makefile.PL
+  Pug: []  # templating
+  Haskell:
+    - stack.yaml
+    - package.yaml
+  Scala:
+    - build.sbt
+  Batchfile:
+    - install.bat
+  TSQL: []  # database script
+  C++: []  # typically uses CMake or Makefile
+  ASL: []  # unknown
+  CMake:
+    - CMakeLists.txt
+  PowerShell:
+    - install.ps1
+  M4: []  # macro processor
+  Objective-C: []  # uses Xcode projects
+  Lua:
+    - rockspec
+  Fluent: []  # localization format
+  Liquid: []  # templating
+  TeX:
+    - texmf.cnf
+  Emacs Lisp: []  # may use `packages.el`
+  Starlark:
+    - BUILD
+    - WORKSPACE
+  EJS: []  # embedded JavaScript templates
+  R:
+    - DESCRIPTION
+  Mermaid: []  # diagramming tool
+  PureBasic: []  # compiled basic, no known deps
+  Awk: []  # scripting
+  ANTLR:
+    - "*.g4"
+  Smalltalk: []  # image-based dev, rarely uses dep files
+  Jasmin: []  # low-level Java assembler
+  Objective-J: []  # similar to Objective-C
+  Procfile:
+    - Procfile

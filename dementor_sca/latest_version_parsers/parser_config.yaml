@@ -1,0 +1,6 @@
+latest-version_parsers:
+  Maven: dementor_sca.latest_version_parsers.maven_parser
+  PyPI: dementor_sca.latest_version_parsers.pypi_parser
+  Go: dementor_sca.latest_version_parsers.go_parser
+  npm: dementor_sca.latest_version_parsers.npm_parser
+  NuGet: dementor_sca.latest_version_parsers.nuget_parser
